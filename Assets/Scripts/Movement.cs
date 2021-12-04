@@ -26,10 +26,13 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             Rotating(rotateValue);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
+        } else if (Input.GetKey(KeyCode.RightArrow))
         {
             Rotating(-rotateValue);
+        }
+        else
+        {
+            ReleaseConstraintsZRotation();
         }
 
         if (Input.GetKey(KeyCode.Space)) // thrusting
@@ -40,6 +43,17 @@ public class Movement : MonoBehaviour
 
     private void Rotating(float rotationThisFrame)
     {
+        ConstrainZRotation();
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
+    }
+
+    private void ReleaseConstraintsZRotation()
+    {
+        myRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
+    }
+
+    private void ConstrainZRotation()
+    {
+        myRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
     }
 }
