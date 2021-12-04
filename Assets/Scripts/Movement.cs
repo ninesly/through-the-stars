@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-       // myRigidbody = GetComponent<Rigidbody>();
+       myRigidbody = GetComponent<Rigidbody>();
     }
 
 
@@ -25,15 +25,21 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(new Vector3(0, 0, rotateValue));
+            Rotating(rotateValue);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(new Vector3(0, 0, -rotateValue));
+            Rotating(-rotateValue);
         }
-        if (Input.GetKey(KeyCode.Space))
+
+        if (Input.GetKey(KeyCode.Space)) // thrusting
         {
-            transform.Translate(new Vector3(0, thrustingValue, 0));
+            myRigidbody.AddRelativeForce(Vector3.up * thrustingValue * Time.deltaTime);
         }
+    }
+
+    private void Rotating(float rotationThisFrame)
+    {
+        transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
     }
 }
