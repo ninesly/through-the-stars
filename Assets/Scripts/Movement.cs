@@ -9,10 +9,12 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotateValue = 1;
 
     Rigidbody myRigidbody;
+    AudioSource myAudioSource;
 
     void Start()
     {
        myRigidbody = GetComponent<Rigidbody>();
+       myAudioSource = GetComponent<AudioSource>();
     }
 
 
@@ -26,7 +28,8 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             Rotating(rotateValue);
-        } else if (Input.GetKey(KeyCode.RightArrow))
+        } 
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             Rotating(-rotateValue);
         }
@@ -38,6 +41,11 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) // thrusting
         {
             myRigidbody.AddRelativeForce(Vector3.up * thrustingValue * Time.deltaTime);
+            if (!myAudioSource.isPlaying) myAudioSource.Play();
+        }
+        else
+        {
+            myAudioSource.Stop();
         }
     }
 
