@@ -304,10 +304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091704ff67120334b9bee6054b2aae77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustingValue: 1200
+  boosterValue: 1200
   rotateValue: 200
-  thrustingSound: {fileID: 8300000, guid: 5db1d873ca24af447b1d32220018749d, type: 3}
-  thrustingSoundVolume: 1
+  boosterSound: {fileID: 0}
+  boosterSoundVolume: 1
 --- !u!54 &5838645629993060693
 Rigidbody:
   m_ObjectHideFlags: 0
