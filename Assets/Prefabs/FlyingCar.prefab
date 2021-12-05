@@ -281,10 +281,13 @@ Transform:
   - {fileID: 314465875151243856}
   - {fileID: 266798761930961994}
   - {fileID: 4077476017030901270}
+<<<<<<< HEAD
   - {fileID: 741254066361428779}
   - {fileID: 5904233943302608811}
   - {fileID: 6506548821440536963}
   - {fileID: 1620520095767541701}
+=======
+>>>>>>> 4de76bdd5446d1a196b0ab018a239b0c8010d23d
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -312,9 +315,12 @@ MonoBehaviour:
   rotateValue: 200
   boosterSound: {fileID: 0}
   boosterSoundVolume: 1
+<<<<<<< HEAD
   rightThrusterPartSys: {fileID: 1500675352922176909}
   leftThrusterPartSys: {fileID: 1500675352922176909}
   mainThrusterPartSys: {fileID: 6405703713477110731}
+=======
+>>>>>>> 4de76bdd5446d1a196b0ab018a239b0c8010d23d
 --- !u!54 &5838645629993060693
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -443,10 +449,15 @@ MonoBehaviour:
   afterCrash: 2.5
   successSound: {fileID: 8300000, guid: a92a5153d8b302749be61381bb494185, type: 3}
   successSoundVolume: 0.545
+<<<<<<< HEAD
   successParticleSystem: {fileID: 614260669444338941}
   crashSound: {fileID: 8300000, guid: 7f52a4f4cec63514e8130b4b3efe2dd1, type: 3}
   crashSoundVolume: 0.15
   crashParticleSystem: {fileID: 5998763925078349425}
+=======
+  crashSound: {fileID: 8300000, guid: 7f52a4f4cec63514e8130b4b3efe2dd1, type: 3}
+  crashSoundVolume: 0.15
+>>>>>>> 4de76bdd5446d1a196b0ab018a239b0c8010d23d
 --- !u!65 &8463173189213626243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -555,6 +566,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &740814882788943843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -823,3 +835,5 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198100719057022332, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
   m_PrefabInstance: {fileID: 6510632876706399927}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> 4de76bdd5446d1a196b0ab018a239b0c8010d23d

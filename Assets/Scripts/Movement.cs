@@ -51,6 +51,15 @@ public class Movement : MonoBehaviour
                 leftThrusterPartSys.Play();
             }
         }
+        if (Input.GetKey(KeyCode.Space)) // boosting
+        {
+            myRigidbody.AddRelativeForce(Vector3.up * boosterValue * Time.deltaTime);
+            if (!myAudioSource.isPlaying)
+            {
+                PlayingSFX(boosterSound, boosterSoundVolume, true);
+                myAudioSource.Play();
+            }
+        }
         else
         {
             ReleaseConstraintsZRotation();
