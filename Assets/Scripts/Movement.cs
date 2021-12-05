@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotateValue = 1f;
     [SerializeField] AudioClip thrustingSound;
     [SerializeField] [Range(0, 1)] float thrustingSoundVolume = 1f;
+    [SerializeField] ParticleSystem mainThrusterPartSys;
+    [SerializeField] ParticleSystem leftThrusterPartSys;
+    [SerializeField] ParticleSystem rightThrusterPartSys;
 
     Rigidbody myRigidbody;
     AudioSource myAudioSource;
@@ -30,27 +33,50 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             Rotating(rotateValue);
-        } 
+
+            // special effects
+            if (!rightThrusterPartSys.isPlaying)
+            {
+                rightThrusterPartSys.Play();
+            }
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             Rotating(-rotateValue);
+
+            // special effects
+            rightThrusterPartSys.Stop();
+            if (!leftThrusterPartSys.isPlaying)
+            {
+                leftThrusterPartSys.Play();
+            }
         }
         else
         {
             ReleaseConstraintsZRotation();
+
+            // special effects
+            leftThrusterPartSys.Stop();
+            rightThrusterPartSys.Stop();            
         }
 
         if (Input.GetKey(KeyCode.Space)) // thrusting
         {
+            
             myRigidbody.AddRelativeForce(Vector3.up * thrustingValue * Time.deltaTime);
             if (!myAudioSource.isPlaying)
             {
                 PlayingSFX(thrustingSound, thrustingSoundVolume, true);
                 myAudioSource.Play();
             }
+            if (!mainThrusterPartSys.isPlaying)
+            {
+                mainThrusterPartSys.Play();
+            }            
         }
         else
         {
+            mainThrusterPartSys.Stop();
             myAudioSource.Stop();
         }
     }

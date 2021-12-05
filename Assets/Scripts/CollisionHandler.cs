@@ -8,8 +8,10 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float afterCrash = 2.5f;
     [SerializeField] AudioClip successSound;
     [SerializeField] [Range(0, 1)] float successSoundVolume = 1f;
+    [SerializeField] ParticleSystem successParticleSystem;
     [SerializeField] AudioClip crashSound;
     [SerializeField] [Range(0, 1)] float crashSoundVolume = 1f;
+    [SerializeField] ParticleSystem crashParticleSystem;
 
     bool isTransitioning = false;
 
@@ -54,26 +56,29 @@ public class CollisionHandler : MonoBehaviour
 
     private void StartSuccessSequence()
     {
+        Debug.Log("Player finished level");
+        isTransitioning = true;
+        movement.enabled = false;
 
-            Debug.Log("Player finished level");
-            isTransitioning = true;
-            movement.enabled = false;
-            movement.PlayingSFX(successSound, successSoundVolume, false);
-            Invoke(nameof(LoadNextScene), afterSuccess);
+        //special effects:
+        movement.PlayingSFX(successSound, successSoundVolume, false);
+        successParticleSystem.Play();
 
+        Invoke(nameof(LoadNextScene), afterSuccess);
     }
 
     void StartCrashSequence()
     {
-            Debug.Log("Player crashed");
-            isTransitioning = true;
-            movement.enabled = false;
-            movement.PlayingSFX(crashSound, crashSoundVolume, false);
-            Invoke(nameof(ReloadScene), afterCrash);
+        Debug.Log("Player crashed");
+        isTransitioning = true;
+        movement.enabled = false;
 
+        //special effects:
+        movement.PlayingSFX(crashSound, crashSoundVolume, false);
+        crashParticleSystem.Play();
+
+        Invoke(nameof(ReloadScene), afterCrash);
     }
-
-
 
     private void LoadNextScene()
     {
@@ -89,8 +94,6 @@ public class CollisionHandler : MonoBehaviour
             SceneManager.LoadScene(nextScene);
         }        
     }
-
-
 
     private void ReloadScene()
     {
