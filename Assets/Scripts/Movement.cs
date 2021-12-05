@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] float thrustingValue = 1f;
+    [SerializeField] float boosterValue = 1f;
     [SerializeField] float rotateValue = 1f;
-    [SerializeField] AudioClip thrustingSound;
-    [SerializeField] [Range(0, 1)] float thrustingSoundVolume = 1f;
+    [SerializeField] AudioClip boosterSound;
+    [SerializeField] [Range(0, 1)] float boosterSoundVolume = 1f;
 
     Rigidbody myRigidbody;
     AudioSource myAudioSource;
@@ -40,12 +40,12 @@ public class Movement : MonoBehaviour
             ReleaseConstraintsZRotation();
         }
 
-        if (Input.GetKey(KeyCode.Space)) // thrusting
+        if (Input.GetKey(KeyCode.Space)) // boosting
         {
-            myRigidbody.AddRelativeForce(Vector3.up * thrustingValue * Time.deltaTime);
+            myRigidbody.AddRelativeForce(Vector3.up * boosterValue * Time.deltaTime);
             if (!myAudioSource.isPlaying)
             {
-                PlayingSFX(thrustingSound, thrustingSoundVolume, true);
+                PlayingSFX(boosterSound, boosterSoundVolume, true);
                 myAudioSource.Play();
             }
         }
